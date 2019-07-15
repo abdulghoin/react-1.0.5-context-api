@@ -1,26 +1,56 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import {
+  ThemeProvider,
+  //ThemeConsumer,
+  //useThemeProvider,
+  //useThemeConsumer,
+} from './contexts/theme';
+
+import Layout from './components/Layout';
+import ThemeButton from './components/ThemeButton';
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider>
+      <Layout>
+        <ThemeButton />
+      </Layout>
+    </ThemeProvider>
   );
 }
 
-export default App;
+/*
+export default function App() {
+  return (
+    <ThemeProvider>
+      <>
+        <ThemeConsumer>
+          {props => {
+            console.log(props);
+            return <p>test</p>;
+          }}
+        </ThemeConsumer>
+        <Layout>
+          <ThemeButton />
+          <List />
+        </Layout>
+      </>
+    </ThemeProvider>
+  );
+}
+*/
+
+/*
+export default useThemeProvider(
+  useThemeConsumer(function App(props) {
+    console.log(props);
+    return (
+      <Layout>
+        <ThemeButton />
+        <List />
+      </Layout>
+    );
+  }),
+);
+*/
